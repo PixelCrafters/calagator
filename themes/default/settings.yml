@@ -1,11 +1,11 @@
 # Site's name:
-name: 'Calagator'
+name: 'VanCal'
 
 # Site's tagline:
-tagline: "Portland's Tech Calendar"
+tagline: "Vancouver's Tech Calendar"
 
 # Site's URL with trailing slash:
-url: 'http://calagator.org/'
+url: 'http://vancal.pixelcrafters.ca'
 
 # Default timezone, run "rake -D time" for information on how to display known timezones:
 timezone: 'Pacific Time (US & Canada)'
@@ -15,9 +15,9 @@ venues_google_map_options:
   # Zoom magnification level:
   zoom: 12
   # Center of the map, in latitude and longitude:
-  center: [45.518493, -122.660737]
+  center: [37.0625, -95.677068]
 
 # Array of tag names to exclude from tag cloud:
 tagcloud_exclusions:
-  - ostartupskey
-  - tvg
+  - free
+  - paid
