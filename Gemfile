@@ -56,6 +56,7 @@ gem 'jquery-rails', '1.0.12'
 gem 'paper_trail_manager'
 
 gem 'exception_notification', '2.4.1'
+gem 'thin'
 
 # Some dependencies are only needed for test and development environments. On
 # production servers, you can skip their installation by running:
