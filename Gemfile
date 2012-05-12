@@ -9,28 +9,7 @@ if defined?(Syck::Syck) and defined?(YAML::ENGINE)
   YAML::ENGINE.yamler = 'syck'
 end
 
-# Load additional gems from "Gemfile.local" if it exists, has same format as this file.
-begin
-  data = File.read("#{basedir}/Gemfile.local")
-rescue Errno::ENOENT
-  # Ignore
-end
-eval data if data
-
-# Database driver
-require 'erb'
-require 'yaml'
-filename = File.join(File.dirname(__FILE__), 'config', 'database.yml')
-raise "Can't find database configuration at: #{filename}" unless File.exist?(filename)
-databases = YAML.load(ERB.new(File.read(filename)).result)
-railsenv = ENV['RAILS_ENV'] || 'development'
-raise "Can't find database configuration for environment '#{railsenv}' in: #{filename}" unless databases[railsenv]
-adapter = databases[railsenv]['adapter']
-raise "Can't find database adapter for environment '#{railsenv}' in: #{filename}" unless databases[railsenv]['adapter']
-adapter = 'pg' if adapter == 'postgresql'
-gem adapter
-
-# Run-time dependencies
+gem 'pg'
 gem 'rails', '3.0.10'
 gem 'columnize', '0.3.4'
 gem 'rdoc', '3.8', :require => nil
