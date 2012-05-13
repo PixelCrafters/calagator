@@ -393,7 +393,7 @@ EOF
           # SEQUENCE for all events, they can edit the "config/secrets.yml"
           # file and set the "icalendar_sequence_offset" value to something
           # greater than 0.
-          entry.sequence((SECRETS.icalendar_sequence_offset || 0) + item.versions.count)
+          entry.sequence((ENV['ICALENDAR_SEQUENCE_OFFSET'] || 0) + item.versions.count)
           
           if item.multiday?
             entry.dtstart item.dates.first

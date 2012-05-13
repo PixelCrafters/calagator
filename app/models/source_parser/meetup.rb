@@ -4,7 +4,7 @@ class SourceParser # :nodoc:
     url_pattern %r{^http://(?:www\.)?meetup\.com/[^/]+/events/([^/]+)/?}
 
     def self.to_abstract_events(opts={})
-      if SECRETS.meetup_api_key.present?
+      if ENV['MEETUP_API_KEY'].present?
         self.to_abstract_events_api_helper(
           :url => opts[:url],
           :error => 'problem',
@@ -13,7 +13,7 @@ class SourceParser # :nodoc:
               "https://api.meetup.com/2/event/#{event_id}",
               {
                 :query => {
-                  :key => SECRETS.meetup_api_key,
+                  :key => ENV['MEETUP_API_KEY'],
                   :sign => 'true'
                 }
               }

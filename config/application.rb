@@ -6,6 +6,15 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+secrets_config = File.expand_path('../secrets.yml', __FILE__)
+if File.exists?(secrets_config)
+  config = YAML.load_file(secrets_config)
+  config.fetch(Rails.env, {}).each do |key, value|
+    ENV[key.upcase] = value.to_s
+  end
+end
+
+
 module Calagator
   class Application < Rails::Application
     #---[ Libraries ]-------------------------------------------------------
@@ -80,8 +89,8 @@ module Calagator
 
     config.before_initialize do
       # Read secrets
-      require 'secrets_reader'
-      ::SECRETS = SecretsReader.read
+      #require 'secrets_reader'
+      #::SECRETS = SecretsReader.read
 
       # Read theme
       require 'theme_reader'
@@ -105,13 +114,13 @@ module Calagator
 
 
       # Set cookie session
-      config.session_store :cookie_store, :key => SECRETS.session_name || "calagator"
-      config.secret_token = SECRETS.session_secret
+      config.session_store :cookie_store, :key => ENV['SESSION_NAME'] || "calagator"
+      config.secret_token = ENV['SESSION_SECRET']
 
 
       # Activate search engine
       require 'lib/search_engine'
-      SearchEngine.kind = SECRETS.search_engine
+      SearchEngine.kind = ENV['SEARCH_ENGINE']
 
       case SearchEngine.kind
       when :acts_as_solr

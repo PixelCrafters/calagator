@@ -184,7 +184,7 @@ module ApplicationHelper
   end
 
   # String name of the mobile preference cookie's name, e.g. "calagator_mobile".
-  MOBILE_COOKIE_NAME = "#{SECRETS.session_name}_mobile"
+  MOBILE_COOKIE_NAME = "#{ENV['SESSION_NAME']}_mobile"
 
   # Returns mobile stylesheet's :media option, which can be overriden by params or cookies.
   #
