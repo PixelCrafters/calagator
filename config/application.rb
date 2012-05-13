@@ -8,8 +8,8 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 secrets_config = File.expand_path('../secrets.yml', __FILE__)
 if File.exists?(secrets_config)
-  config = YAML.load_file(secrets_config)
-  config.fetch(Rails.env, {}).each do |key, value|
+  secrets = YAML.load_file(secrets_config)
+  secrets.each do |key, value|
     ENV[key.upcase] = value.to_s
   end
 end
