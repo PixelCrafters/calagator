@@ -24,6 +24,7 @@ body {
 }
 
 
+/* comment out to remove Calagator title
 #project_title {
   background: url('/images/head_calagator.gif') no-repeat;
   height: 31px;
@@ -34,6 +35,7 @@ body {
   top: 25px;
   width: 135px;
 }
+*/
 
 #app_menu ul {
   font-size: 1.3em;
