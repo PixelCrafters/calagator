@@ -47,7 +47,7 @@ module ApplicationHelper
   def google_map(locatable_items, options={})
     return nil if defined?(GOOGLE_APPLICATION_ID) == nil
     options[:controls] ||= [:zoom, :scale, :type] # the default, minus :overview
-    options[:zoom] ||= 12
+    options[:zoom] ||= 11
     options[:center] = [49.276514, -123.125196]
 
     # Make the map and our marker(s)
