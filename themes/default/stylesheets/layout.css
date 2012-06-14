@@ -24,18 +24,16 @@ body {
 }
 
 
-/* comment out to remove Calagator title
 #project_title {
-  background: url('/images/head_calagator.gif') no-repeat;
-  height: 31px;
+  background: url('/images/pixelcrafters128.png') no-repeat;
+  height: 128px;
   left: 40px;
   overflow: hidden;
   position: absolute;
   text-indent: -999px;
   top: 25px;
-  width: 135px;
+  width: 128px;
 }
-*/
 
 #app_menu ul {
   font-size: 1.3em;
