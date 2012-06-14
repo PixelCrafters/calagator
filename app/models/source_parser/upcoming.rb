@@ -26,7 +26,7 @@ class SourceParser # :nodoc:
       if opts[:content].nil? or opts[:content] !~ /<rsp stat="ok" version="1.0"/m
         return false unless event_id # Give up unless we can extract the Upcoming event_id.
 
-        api_key = SECRETS.upcoming_api_key
+        api_key = ENV['UPCOMING_API_KEY']
         api_url = "http://upcoming.yahooapis.com/services/rest/?api_key=#{api_key}&method=event.getInfo&event_id=#{event_id}"
 
         # Dup and alter `opts` for call to #content_for, without polluting it for other drivers.

@@ -47,7 +47,8 @@ module ApplicationHelper
   def google_map(locatable_items, options={})
     return nil if defined?(GOOGLE_APPLICATION_ID) == nil
     options[:controls] ||= [:zoom, :scale, :type] # the default, minus :overview
-    options[:zoom] ||= 14
+    options[:zoom] ||= 11
+    options[:center] = [49.276514, -123.125196]
 
     # Make the map and our marker(s)
     map = GoogleMap.new(options)
@@ -184,7 +185,7 @@ module ApplicationHelper
   end
 
   # String name of the mobile preference cookie's name, e.g. "calagator_mobile".
-  MOBILE_COOKIE_NAME = "#{SECRETS.session_name}_mobile"
+  MOBILE_COOKIE_NAME = "#{ENV['SESSION_NAME']}_mobile"
 
   # Returns mobile stylesheet's :media option, which can be overriden by params or cookies.
   #
