@@ -10,7 +10,7 @@ if defined?(Syck::Syck) and defined?(YAML::ENGINE)
 end
 
 gem 'pg'
-gem 'rails', '3.0.19'
+gem 'rails', '3.0.20'
 gem 'columnize', '0.3.4'
 gem 'rdoc', '3.8', :require => nil
 gem 'geokit', '1.5.0'
